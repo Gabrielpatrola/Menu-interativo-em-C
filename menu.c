@@ -26,6 +26,24 @@ Data Entrega:
 #define Tam 10 
 #define TAMANHO_PILHA 10 
 
+struct aluno{
+	char nome[100];
+	char RGA[13];
+	char endereco[100];
+	char email[100];
+	char nome_pai[100];
+	char nome_mae[100];
+	char celular[12];
+	char data[11];
+	char cidade[60];
+	char bairro[100];
+	char curso[60];
+	int semestre;
+	char campus [60];
+};
+
+
+
 void Inserir( int fila[], int *fim, int tam, int valor ){  
 	fila[(*fim)] = valor;    
 	*fim= (*fim)+1; 
@@ -76,10 +94,9 @@ void gotoxy( int x, int y )
 
 //funcao do menu "ALUNO"
 int menu_aluno(){
-	
 	int aux;
 	int posicao = 6, tecla;
-	
+	struct aluno cadastro[10];
 		do{
 			system("cls");
 			gotoxy(24,5);printf("------------- ALUNO ----------");
@@ -107,7 +124,92 @@ int menu_aluno(){
 				}
 
 		}while(tecla!= ENTER);
-				if(posicao == 8){
+			if(posicao == 6){
+				system("cls");
+				gotoxy(24,5);printf("------------- ALUNO ----------");
+				gotoxy(23,6);printf("Escolha o numero do cadastro:");
+				gotoxy(23,7);scanf("%d", &aux);
+				system("cls");
+				
+				gotoxy(24,5);printf("------------- ALUNO ----------");
+				gotoxy(23,6);printf("Nome do aluno ......: ");
+  				fflush(stdin);
+  				fgets(cadastro[aux].nome, 100, stdin);
+  				system("cls");
+  				
+  				gotoxy(24,5);printf("------------- ALUNO ----------");
+ 				gotoxy(23,6);printf("RGA ......: ");
+ 				fflush(stdin);
+  				fgets(cadastro[aux].RGA, 13, stdin);
+  				system("cls");
+  				
+  				gotoxy(24,5);printf("------------- ALUNO ----------");
+   				gotoxy(23,6);printf("Informe cidade ..: ");
+ 				fflush(stdin);
+  				fgets(cadastro[aux].cidade, 60, stdin);
+  				system("cls");
+  				
+  				gotoxy(24,5);printf("------------- ALUNO ----------");
+   				gotoxy(23,6);printf("Informe o endereco..: ");
+ 				fflush(stdin);
+  				fgets(cadastro[aux].endereco, 100, stdin);
+  				system("cls");
+  				
+  				gotoxy(24,5);printf("------------- ALUNO ----------");
+				gotoxy(23,6);printf("Nome do bairro ......: ");
+  				fflush(stdin);
+  				fgets(cadastro[aux].bairro, 100, stdin);
+  				system("cls");
+  	
+  				gotoxy(24,5);printf("------------- ALUNO ----------");
+				gotoxy(23,6);printf("Informe  o email..: ");
+ 				fflush(stdin);
+  				fgets(cadastro[aux].email, 100, stdin);
+  				system("cls");
+  				
+  				gotoxy(24,5);printf("------------- ALUNO ----------");
+				gotoxy(23,6);printf("Nome do pai ......: ");
+  				fflush(stdin);
+  				fgets(cadastro[aux].nome_pai, 100, stdin);
+  				system("cls");
+  				
+  				gotoxy(24,5);printf("------------- ALUNO ----------");
+ 				gotoxy(23,6);printf("Nome da mae ......: ");
+  				fflush(stdin);
+ 				fgets(cadastro[aux].nome_mae, 100, stdin);
+  				system("cls");
+  				
+  				gotoxy(24,5);printf("------------- ALUNO ----------");
+ 				gotoxy(23,6);printf("Informe o celular ..: ");
+  				fflush(stdin);
+  				fgets(cadastro[aux].celular, 12, stdin);
+  				system("cls");
+	 		 	
+	 		 	gotoxy(24,5);printf("------------- ALUNO ----------");
+ 				gotoxy(23,6);printf("Informe data de nascimento..: ");
+ 				fflush(stdin);
+ 				fgets(cadastro[aux].data, 11, stdin);
+ 				system("cls");
+ 					
+ 				gotoxy(24,5);printf("------------- ALUNO ----------");
+ 				gotoxy(23,6);printf("Curso ......: ");
+  				fflush(stdin);
+ 				fgets(cadastro[aux].curso, 60, stdin);
+ 				system("cls");
+  				
+  				gotoxy(24,5);printf("------------- ALUNO ----------");
+ 				gotoxy(23,6);printf("Informe o semestre ..: ");
+				scanf("%d", &cadastro[aux].semestre);
+				system("cls");
+  				
+  				gotoxy(24,5);printf("------------- ALUNO ----------");
+ 				gotoxy(23,6);printf("Informe o campus ..: ");
+ 				fflush(stdin);
+ 				fgets(cadastro[aux].campus, 60, stdin);
+ 				system("cls"); 
+			}
+			
+			if(posicao == 8){
 					main(); //voltar para tela principal
 				}
 	return posicao;
