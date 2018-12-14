@@ -1,5 +1,3 @@
-Os dados de cadastramento: Nome Completo, RGA, Endereço, E-mail, Nome pai,
-Nome mãe, Celular, Data Nascimento, Cidade, Bairro, Curso, Semestre, Campus.
 Também falta fazer o listar dados do sub menu "alunos" funcionar.
 
 Menu Buscar deve-se ter o sub-menu:Busca Binária. Retorne
