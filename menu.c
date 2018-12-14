@@ -147,6 +147,7 @@ int menu_pilha(){
 	int pilha[TAMANHO_PILHA];
 	int topoPilha = 0; //considera que uma a ser inciada tem valor de topo = 0
 	int valor,cont,remo,op;
+	int opcao, busca;
 	int aux;
 	int posicao = 6, tecla;
 	inicio:
@@ -263,12 +264,71 @@ int menu_pilha(){
  					goto inicio;
 					break;
  				} 	
-				case 9:{
-				
-			 
-					
-				break;
-				}
+					case 9:{
+				system("cls");
+					for(int i=24;i<60;i++){
+						gotoxy(i,9);printf("-"); //For para o prenchimento da parte inferior do menu
+					}
+					gotoxy(24,4);printf("----------------- Pilha ------------");
+					gotoxy(23,5);printf("| 1  - Busca Sequencial             |");
+					gotoxy(23,6);printf("| 2  - Ordem Binária                |");
+					gotoxy(23,7);printf("| Escolha a opcao:                  |");
+					gotoxy(23,8);printf("|                                   |");
+					gotoxy(25,8);scanf("%d",&opcao);
+					switch(opcao){
+						case 1:{
+						system("cls");
+								gotoxy(24,4);printf("----------------- Pilha ------------");
+								gotoxy(23,5);printf("Informe o número que deseja procurar:");
+								gotoxy(23,6);printf("|                                   |");
+								gotoxy(25,6);scanf("%d",&busca);
+								if (topoPilha>0){
+								system("cls");
+									for(cont = 0; cont<topoPilha; cont++){
+											if(pilha[cont] == busca){
+												gotoxy(24,4);printf("----------------- Pilha ------------");
+										 		gotoxy(23,5);printf("Elemento [%d] encontrado na posição [%d]", busca, cont);
+										 		gotoxy(23,6);system("pause");
+										 		goto inicio;
+										 	}
+								}
+								gotoxy(24,4);printf("----------------- Pilha ------------");
+								gotoxy(23,5);printf("Elemento [%d] não encontrado", busca);
+								gotoxy(23,6);system("pause");
+								}
+								else{
+								gotoxy(24,4);printf("----------------- Pilha ------------");
+								gotoxy(23,5);printf("Pilha vazia");
+								gotoxy(23,6);system("pause");
+								goto inicio;
+							}
+						}
+						goto inicio;
+ 						break;
+ 						case 2:{
+						system("cls");
+						if (topoPilha>0){
+							int aux = 0;
+							for (cont = topoPilha-1;cont>=aux;aux++){
+								gotoxy(24,4);printf("----------------- Pilha ------------");
+								gotoxy(23,6+aux);
+								printf("elemento [%d] ===== %d",cont-aux, pilha[cont-aux]);
+							}
+							gotoxy(23,5);system("Pause");
+ 						}
+						else{
+							gotoxy(24,4);printf("----------------- Pilha ------------");
+							gotoxy(23,5);printf("Pilha Vazia");
+ 							gotoxy(23,6);system("Pause");
+ 						}
+ 						goto inicio;
+ 						}
+ 					
+ 						
+ 					}
+ 					goto inicio;
+					break;
+ 				}
 				case 10:
 					main(); //voltar para tela principal
 				break;
@@ -348,7 +408,7 @@ int menu_fila(){
 					for(int i=24;i<60;i++){
 						gotoxy(i,9);printf("-"); //For para o prenchimento da parte inferior do menu
 					}
-					gotoxy(24,4);printf("----------------- Pilha ------------");
+					gotoxy(24,4);printf("----------------- Fila ------------");
 					gotoxy(23,5);printf("| 1  - Ordem Crescente              |");
 					gotoxy(23,6);printf("| 2  - Ordem Decrescente            |");
 					gotoxy(23,7);printf("| Escolha a opcao:                  |");
@@ -415,7 +475,27 @@ int menu_fila(){
 								gotoxy(23,5);printf("Informe o número que deseja procurar:");
 								gotoxy(23,6);printf("|                                   |");
 								gotoxy(25,6);scanf("%d",&busca);
-									}
+								if (fim>0){
+								system("cls");
+									for(cont = 0; cont<fim; cont++){
+											if(fila[cont] == busca){
+												gotoxy(24,4);printf("----------------- Fila ------------");
+										 		gotoxy(23,5);printf("Elemento [%d] encontrado na posição [%d]", busca, cont);
+										 		gotoxy(23,6);system("pause");
+										 		goto inicio;
+										 	}
+								}
+								gotoxy(24,4);printf("----------------- Fila ------------");
+								gotoxy(23,5);printf("Elemento [%d] não encontrado", busca);
+								gotoxy(23,6);system("pause");
+								}
+								else{
+								gotoxy(24,4);printf("----------------- Fila ------------");
+								gotoxy(23,5);printf("Lista vazia");
+								gotoxy(23,6);system("pause");
+								goto inicio;
+							}
+						}
 						goto inicio;
  						break;
  						case 2:{
@@ -498,4 +578,4 @@ int menu_principal(){
 				break;	
 			}	
 	return posicao;
-}
+} 
