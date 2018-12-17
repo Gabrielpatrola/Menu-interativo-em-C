@@ -1,4 +1,4 @@
-Também falta fazer o listar dados do sub menu "alunos" funcionar.
+Arrumar problema de alocação de memoria no TAD Cadastro
 
 Menu Buscar deve-se ter o sub-menu:Busca Binária. Retorne
 a posição onde se encontra o número.
