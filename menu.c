@@ -26,7 +26,7 @@ Data Entrega:
 #define Tam 10 
 #define TAMANHO_PILHA 10 
 
-struct aluno{
+typedef struct aluno{
 	char nome[100];
 	char RGA[13];
 	char endereco[100];
@@ -40,7 +40,7 @@ struct aluno{
 	char curso[60];
 	int semestre;
 	char campus [60];
-};
+}cadastro;
 
 
 
@@ -94,9 +94,11 @@ void gotoxy( int x, int y )
 
 //funcao do menu "ALUNO"
 int menu_aluno(){
-	int aux;
+	int j;
 	int posicao = 6, tecla;
-	struct aluno cadastro[10];
+	struct cadastro *aux = malloc(sizeof(cadastro));
+	
+	inicio:
 		do{
 			system("cls");
 			gotoxy(24,5);printf("------------- ALUNO ----------");
@@ -128,13 +130,13 @@ int menu_aluno(){
 				system("cls");
 				gotoxy(24,5);printf("------------- ALUNO ----------");
 				gotoxy(23,6);printf("Escolha o numero do cadastro:");
-				gotoxy(23,7);scanf("%d", &aux);
+				gotoxy(23,7);scanf("%d", &j);
 				system("cls");
 				
 				gotoxy(24,5);printf("------------- ALUNO ----------");
 				gotoxy(23,6);printf("Nome do aluno ......: ");
   				fflush(stdin);
-  				fgets(cadastro[aux].nome, 100, stdin);
+  				fgets( aux ->, 100, stdin);
   				system("cls");
   				
   				gotoxy(24,5);printf("------------- ALUNO ----------");
@@ -207,8 +209,40 @@ int menu_aluno(){
  				fflush(stdin);
  				fgets(cadastro[aux].campus, 60, stdin);
  				system("cls"); 
+ 				goto inicio;
 			}
-			
+			if(posicao == 7){
+				system("cls");  
+				gotoxy(24,5);printf("------------- ALUNOS ----------");
+				gotoxy(24,4);printf("Digite o numero do cadastro:");
+				gotoxy(24,6);scanf("%d", &aux);
+				system("cls"); 
+				if(aux <=10){
+					system("cls"); 
+					gotoxy(24,5);printf("------------- ALUNOS ----------");
+					gotoxy(24,6);printf("Nome ...........: %s\n", cadastro[aux].nome);
+					gotoxy(24,7);printf("RGA  .....: %s\n", cadastro[aux].RGA);
+					gotoxy(24,8);printf("Cidade ...........: %s\n", cadastro[aux].cidade);
+					gotoxy(24,9);printf("Endereco ...: %s\n" , cadastro[aux].endereco);
+					gotoxy(24,10);printf("Bairro .....: %s\n", cadastro[aux].bairro);
+					gotoxy(24,11);printf("Email ...: %s\n" , cadastro[aux].email);
+					gotoxy(24,12);printf("Nome Pai ...........: %s\n", cadastro[aux].nome_pai);
+					gotoxy(24,13);printf("Nome mae .....: %s\n", cadastro[aux].nome_mae);
+					gotoxy(24,14);printf("Celular ...: %s\n" , cadastro[aux].celular);
+					gotoxy(24,15);printf("Data de nascimento ...: %s\n" , cadastro[aux].data);
+					gotoxy(24,16);printf("Curso ...: %s\n" , cadastro[aux].curso);
+					gotoxy(24,17);printf("Semestre ...: %d\n" , cadastro[aux].semestre);
+					gotoxy(24,18);printf("Campus ...........: %s\n", cadastro[aux].campus);
+					gotoxy(24,19);system("Pause"); 
+					system("cls"); 
+					goto inicio;	
+				}
+				else{
+					printf("numero de cadastro invalido.");
+					system("Pause"); 
+					goto inicio;
+				}
+			}
 			if(posicao == 8){
 					main(); //voltar para tela principal
 				}
