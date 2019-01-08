@@ -1,7 +1,1 @@
 Arrumar problema de alocação de memoria no TAD Cadastro
-
-Menu Buscar deve-se ter o sub-menu:Busca Binária. Retorne
-a posição onde se encontra o número.
-Para fazer a Busca Binária use um vetor auxiliar para receber os dados da Pilha/Fila,
-ordene e somente depois você utilize a busca Binária. Para mostrar a posição do
-elemento, verifique no vetor original a posição correta.
