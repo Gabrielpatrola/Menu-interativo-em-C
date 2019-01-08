@@ -23,9 +23,10 @@ Data Entrega:
 #define ESC 27
 
 //defines para utilizacao das filas e pilhas
-#define Tam 10 
-#define TAMANHO_PILHA 10 
+#define T10 
+#define TAMANHO_PILHA 10
 
+//struct de cadastro dos alunos
 struct aluno{
 	char nome[100];
 	char RGA[13];
@@ -41,12 +42,42 @@ struct aluno{
 	int semestre;
 	char campus [60];
 };
+//funcao para ordernar o vetor antes da busca binaria
+void insertion_sort(int vetor[], int tamanhoVetor) {
+int escolhido, j;
+    for (int i = 1; i < tamanhoVetor; i++) {
+		escolhido = vetor[i];
+		j = i - 1;	
+		while ((j >= 0) && (vetor[j] > escolhido)) {
+			vetor[j + 1] = vetor[j];
+			j--;
+		}
+		vetor[j + 1] = escolhido;
+	}
+}
 
+//funcao busca binaria
+int buscaBinaria(int vet[], int n, int chave) {
+	int posIni = 0, posFim = n - 1, posMeio;
+	/* enquanto o trecho do vetor considerado tiver pelo menos um elemento */
+	while (posIni <= posFim) {
+		posMeio = (posIni + posFim) / 2;
+		if (vet[posMeio] == chave)
+			return posMeio;
+		else if (vet[posMeio] > chave)
+			posFim = posMeio - 1;
+		else
+			posIni = posMeio + 1;
+}
+return -1;
+}
+//funcao para inserir valor na fila
 void Inserir( int fila[], int *fim, int tam, int valor ){  
 	fila[(*fim)] = valor;    
 	*fim= (*fim)+1; 
 } 
- 
+
+//funcao para remover valor da fila
 int Remover(int fila[], int *fim ){ 
 	int excluido, posicaoAux;    
 	excluido = fila[0];       
@@ -57,6 +88,7 @@ int Remover(int fila[], int *fim ){
   	 return excluido; 
 } 
  
+//funcao para inserir valor na pilha
 void inserirValorPilha( int pilha[], int *topoPilha, int tamanhoMaxPilha, int valor ){    
 	if ( *topoPilha < tamanhoMaxPilha ){      
 		pilha[*topoPilha] = valor;       
@@ -64,6 +96,7 @@ void inserirValorPilha( int pilha[], int *topoPilha, int tamanhoMaxPilha, int va
 	} 
 } 
 
+//funcao para remover valor da pilha
 int removerValorPilha(int pilha[], int *topoPilha){     
 	int retorno = -1;     
 		if (*topoPilha > 0){        
@@ -72,6 +105,7 @@ int removerValorPilha(int pilha[], int *topoPilha){
 	}      
 	return retorno; 
 } 
+
 
 int menu_principal();
 int main()
@@ -296,6 +330,7 @@ int menu_pilha(){
 	int valor,cont,remo,op;
 	int opcao, busca;
 	int aux;
+	int x;
 	int posicao = 6, tecla;
 	inicio:
 		do{
@@ -453,25 +488,24 @@ int menu_pilha(){
 						goto inicio;
  						break;
  						case 2:{
+						insertion_sort(pilha, 10);
 						system("cls");
-						if (topoPilha>0){
-							int aux = 0;
-							for (cont = topoPilha-1;cont>=aux;aux++){
-								gotoxy(24,4);printf("----------------- Pilha ------------");
-								gotoxy(23,6+aux);
-								printf("elemento [%d] ===== %d",cont-aux, pilha[cont-aux]);
-							}
-							gotoxy(23,5);system("Pause");
- 						}
+						gotoxy(24,4);printf("----------------- Pilha ------------");
+						gotoxy(24,5);printf("digite o valor que deseja procurar:");
+						gotoxy(24,6);scanf("%d", &x);
+						int pos = buscaBinaria(pilha, 10,x);
+						system("cls");
+						if (pos != -1){
+							gotoxy(24,4);printf("----------------- Pilha ------------");
+							gotoxy(24,5);printf("Elemento [%d] encontrado na posição [%d]\n",x, pos);
+							gotoxy(24,6);system("pause");
+						}
 						else{
 							gotoxy(24,4);printf("----------------- Pilha ------------");
-							gotoxy(23,5);printf("Pilha Vazia");
- 							gotoxy(23,6);system("Pause");
+							gotoxy(24,5);printf("Elemento [%d]não encontra-se no vetor!\n", x);
+							gotoxy(24,6);system("pause");
+						}
  						}
- 						goto inicio;
- 						}
- 					
- 						
  					}
  					goto inicio;
 					break;
@@ -490,6 +524,7 @@ int menu_fila(){
 	int opcao,busca;
 	int aux;
 	int posicao = 6, tecla;
+	int x;
 	inicio:
 		do{
 			system("cls");
@@ -646,25 +681,24 @@ int menu_fila(){
 						goto inicio;
  						break;
  						case 2:{
+ 						insertion_sort(fila, 10);
 						system("cls");
-						if (fim>0){
-							int aux = 0;
-							for (cont = fim-1;cont>=aux;aux++){
-								gotoxy(24,4);printf("----------------- Fila ------------");
-								gotoxy(23,6+aux);
-								printf("elemento [%d] ===== %d",cont-aux, fila[cont-aux]);
-							}
-							gotoxy(23,5);system("Pause");
- 						}
+						gotoxy(24,4);printf("----------------- Fila ------------");
+						gotoxy(24,5);printf("digite o valor que deseja procurar:");
+						gotoxy(24,6);scanf("%d", &x);
+						int pos = buscaBinaria(fila, 10,x);
+						system("cls");
+						if (pos != -1){
+							gotoxy(24,4);printf("----------------- Fila ------------");
+							gotoxy(24,5);printf("Elemento [%d] encontrado na posição [%d]\n",x, pos);
+							gotoxy(24,6);system("pause");
+						}
 						else{
 							gotoxy(24,4);printf("----------------- Fila ------------");
-							gotoxy(23,5);printf("Fila Vazia");
- 							gotoxy(23,6);system("Pause");
- 						}
- 						goto inicio;
- 						}
- 					
- 						
+							gotoxy(24,5);printf("Elemento [%d]não encontra-se no vetor!\n", x);
+							gotoxy(24,6);system("pause");
+						}
+ 						}	
  					}
  					goto inicio;
 					break;
