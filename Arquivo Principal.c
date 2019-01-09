@@ -110,7 +110,7 @@ int removerValorPilha(int pilha[], int *topoPilha){
 } 
 
 
-int menu_principal();
+int menu_principal(); //funcao que desenha o menu na tela
 int main()
 {
 	setlocale(LC_ALL,""); // acentuacao
@@ -128,7 +128,7 @@ void gotoxy( int x, int y )
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-
+//funcao contendo o menu aluno e seus sub menus
 int menu_aluno(){
 	int aux;
 	int posicao = 6, tecla;
@@ -149,21 +149,18 @@ int menu_aluno(){
 				}
 			gotoxy(24,posicao);printf("%c%c",62,62);gotoxy(52,posicao);printf("%c%c",60,60); //setinhas de seleção
 			tecla=getch();
-		
 				if(tecla == ABAIXO){
 					posicao=posicao+1;
 					if(posicao==9){
 						posicao=6;
 					}	
 				}
-				
 				if (tecla == ACIMA){
 					posicao=posicao-1;
 					if(posicao==5){
 						posicao=8;
 					}
 				}
-
 		}while(tecla!= ENTER);
 			if(posicao == 6){
 				system("cls");
@@ -293,11 +290,10 @@ int menu_aluno(){
 	return posicao;
 }
 
-int sobre(){
-	
+//funcao contendo o sub menu Sobre
+int sobre(){	
 	int aux;
-	int posicao = 6, tecla;
-	
+	int posicao = 6, tecla;	
 		do{
 			system("cls");
 			gotoxy(2,5);printf("------------------------------- SOBRE ---------------------------------------");
@@ -321,9 +317,8 @@ int sobre(){
 			return posicao;
 }
 
-
-int menu_pilha(){
-	
+//funcao contem o Menu pilha e seus sub menus
+int menu_pilha(){	
 	int pilha[TAMANHO_PILHA];
 	int topoPilha = 0; //considera que uma a ser inciada tem valor de topo = 0
 	int valor,cont,remo,op;
@@ -487,23 +482,24 @@ int menu_pilha(){
 						goto inicio;
  						break;
  						case 2:{
-						insertion_sort(pilha, 10);
-						system("cls");
-						gotoxy(24,4);printf("----------------- Pilha ------------");
-						gotoxy(24,5);printf("digite o valor que deseja procurar:");
-						gotoxy(24,6);scanf("%d", &x);
-						int pos = buscaBinaria(pilha, 10,x);
-						system("cls");
-						if (pos != -1){
+							insertion_sort(pilha, 10);
+							system("cls");
 							gotoxy(24,4);printf("----------------- Pilha ------------");
-							gotoxy(24,5);printf("Elemento [%d] encontrado na posição [%d]\n",x, pos);
-							gotoxy(24,6);system("pause");
-						}
-						else{
-							gotoxy(24,4);printf("----------------- Pilha ------------");
-							gotoxy(24,5);printf("Elemento [%d]não encontra-se no vetor!\n", x);
-							gotoxy(24,6);system("pause");
-						}
+							gotoxy(24,5);printf("digite o valor que deseja procurar:");
+							gotoxy(24,6);scanf("%d", &x);
+							int pos = buscaBinaria(pilha, 10,x);
+							system("cls");
+							
+							if (pos != -1){
+								gotoxy(24,4);printf("----------------- Pilha ------------");
+								gotoxy(24,5);printf("Elemento [%d] encontrado na posição [%d]\n",x, pos);
+								gotoxy(24,6);system("pause");
+							}
+							else{
+								gotoxy(24,4);printf("----------------- Pilha ------------");
+								gotoxy(24,5);printf("Elemento [%d]não encontra-se no vetor!\n", x);
+								gotoxy(24,6);system("pause");
+							}
  						}
  					}
  					goto inicio;
@@ -516,6 +512,7 @@ int menu_pilha(){
 	return posicao;
 }
 
+//funcao contem o menu fila e seus sub menus
 int menu_fila(){
 	int fila[10];
  	int fim = 0; //considera que uma fila a ser inciada tem valor de fim = 0
@@ -657,7 +654,7 @@ int menu_fila(){
 								gotoxy(23,6);printf("|                                   |");
 								gotoxy(25,6);scanf("%d",&busca);
 								if (fim>0){
-								system("cls");
+									system("cls");
 									for(cont = 0; cont<fim; cont++){
 											if(fila[cont] == busca){
 												gotoxy(24,4);printf("----------------- Fila ------------");
@@ -666,37 +663,37 @@ int menu_fila(){
 										 		goto inicio;
 										 	}
 								}
-								gotoxy(24,4);printf("----------------- Fila ------------");
-								gotoxy(23,5);printf("Elemento [%d] não encontrado", busca);
-								gotoxy(23,6);system("pause");
+									gotoxy(24,4);printf("----------------- Fila ------------");
+									gotoxy(23,5);printf("Elemento [%d] não encontrado", busca);
+									gotoxy(23,6);system("pause");
 								}
 								else{
-								gotoxy(24,4);printf("----------------- Fila ------------");
-								gotoxy(23,5);printf("Lista vazia");
-								gotoxy(23,6);system("pause");
-								goto inicio;
+									gotoxy(24,4);printf("----------------- Fila ------------");
+									gotoxy(23,5);printf("Lista vazia");
+									gotoxy(23,6);system("pause");
+									goto inicio;
 							}
 						}
 						goto inicio;
  						break;
  						case 2:{
- 						insertion_sort(fila, 10);
-						system("cls");
-						gotoxy(24,4);printf("----------------- Fila ------------");
-						gotoxy(24,5);printf("digite o valor que deseja procurar:");
-						gotoxy(24,6);scanf("%d", &x);
-						int pos = buscaBinaria(fila, 10,x);
-						system("cls");
-						if (pos != -1){
+ 							insertion_sort(fila, 10);
+							system("cls");
 							gotoxy(24,4);printf("----------------- Fila ------------");
-							gotoxy(24,5);printf("Elemento [%d] encontrado na posição [%d]\n",x, pos);
-							gotoxy(24,6);system("pause");
-						}
-						else{
-							gotoxy(24,4);printf("----------------- Fila ------------");
-							gotoxy(24,5);printf("Elemento [%d]não encontra-se no vetor!\n", x);
-							gotoxy(24,6);system("pause");
-						}
+							gotoxy(24,5);printf("digite o valor que deseja procurar:");
+							gotoxy(24,6);scanf("%d", &x);
+							int pos = buscaBinaria(fila, 10,x);
+							system("cls");
+							if (pos != -1){
+								gotoxy(24,4);printf("----------------- Fila ------------");
+								gotoxy(24,5);printf("Elemento [%d] encontrado na posição [%d]\n",x, pos);
+								gotoxy(24,6);system("pause");
+							}
+							else{
+								gotoxy(24,4);printf("----------------- Fila ------------");
+								gotoxy(24,5);printf("Elemento [%d]não encontra-se no vetor!\n", x);
+								gotoxy(24,6);system("pause");
+							}
  						}	
  					}
  					goto inicio;
@@ -709,6 +706,7 @@ int menu_fila(){
 	return posicao;
 }
 
+//funcao do menu principal contem as chamadas para os submenus
 int menu_principal(){
 
 	int aux;
