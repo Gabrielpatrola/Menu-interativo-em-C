@@ -175,7 +175,6 @@ int menu_aluno(){
 				gotoxy(23,6);printf("Nome do aluno ......: ");
   				fflush(stdin);
   				fgets(cadastro[aux].nome, 100, stdin);
-		
   				system("cls");
   				
   				
