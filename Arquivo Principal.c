@@ -134,7 +134,7 @@ int menu_aluno(){
 	int posicao = 6, tecla;
 	struct aluno cadastro[10];
 	for(aux=0; aux<10; aux++){
-		cadastro[aux].ini = 0;
+		cadastro[aux].ini = -1;
 	}
 	
 	inicio:
@@ -256,7 +256,7 @@ int menu_aluno(){
 				gotoxy(24,4);printf("Digite o numero do cadastro:");
 				gotoxy(24,6);scanf("%d", &aux);
 				system("cls"); 
-				if(aux <=10 && cadastro[aux].ini !=0){
+				if(aux <=10 && cadastro[aux].ini !=-1){
 					system("cls"); 
 					gotoxy(24,5);printf("------------- ALUNOS ----------");
 					gotoxy(24,6);printf("Nome ...........: %s\n", cadastro[aux].nome);
