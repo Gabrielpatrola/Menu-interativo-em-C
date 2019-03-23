@@ -113,6 +113,7 @@ int removerValorPilha(int pilha[], int *topoPilha){
 int menu_principal(); //funcao que desenha o menu na tela
 int main()
 {
+	system("Color 30");
 	setlocale(LC_ALL,""); // acentuacao
 	menu_principal(); // funcao para abrir o menu principal
 	system("cls"); //limpar tela
@@ -130,6 +131,7 @@ void gotoxy( int x, int y )
 
 //funcao contendo o menu aluno e seus sub menus
 int menu_aluno(){
+	system("Color 30");	
 	int aux;
 	int posicao = 6, tecla;
 	struct aluno cadastro[10];
@@ -149,6 +151,9 @@ int menu_aluno(){
 				}
 			gotoxy(24,posicao);printf("%c%c",62,62);gotoxy(52,posicao);printf("%c%c",60,60); //setinhas de seleção
 			tecla=getch();
+			if (tecla == ESC){
+				main();
+			}
 				if(tecla == ABAIXO){
 					posicao=posicao+1;
 					if(posicao==9){
@@ -290,7 +295,8 @@ int menu_aluno(){
 }
 
 //funcao contendo o sub menu Sobre
-int sobre(){	
+int sobre(){
+	system("Color 30");	
 	int aux;
 	int posicao = 6, tecla;	
 		do{
@@ -312,12 +318,16 @@ int sobre(){
 				if(tecla == ENTER){
 				main(); //voltar para tela principal
 				}
+			if (tecla == ESC){
+				main();
+			}	
 		}while(tecla!= ENTER);
 			return posicao;
 }
 
 //funcao contem o Menu pilha e seus sub menus
 int menu_pilha(){	
+system("Color 30");	
 	int pilha[TAMANHO_PILHA];
 	int topoPilha = 0; //considera que uma a ser inciada tem valor de topo = 0
 	int valor,cont,remo,op;
@@ -339,6 +349,9 @@ int menu_pilha(){
 				}
 			gotoxy(24,posicao);printf("%c%c",62,62);gotoxy(58,posicao);printf("%c%c",60,60);  //setinhas de seleção
 			tecla=getch();
+			if (tecla == ESC){
+				main();
+			}	
 				if(tecla == ABAIXO){ 
 					posicao=posicao+1;
 					if(posicao==11){
@@ -513,6 +526,7 @@ int menu_pilha(){
 
 //funcao contem o menu fila e seus sub menus
 int menu_fila(){
+	system("Color 30");	
 	int fila[10];
  	int fim = 0; //considera que uma fila a ser inciada tem valor de fim = 0
  	int valor,cont,op,excluido;int tam=10;
@@ -534,6 +548,9 @@ int menu_fila(){
 				}
 			gotoxy(24,posicao);printf("%c%c",62,62);gotoxy(58,posicao);printf("%c%c",60,60);  //setinhas de seleção
 			tecla=getch();
+			if (tecla == ESC){
+				main();
+			}	
 				if(tecla == ABAIXO){
 					posicao=posicao+1;
 						if(posicao==11){
