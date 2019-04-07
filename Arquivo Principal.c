@@ -360,17 +360,17 @@ int sobre(){
 	int posicao = 6, tecla;	
 		do{
 			system("cls");
-			gotoxy(2,5);printf("------------------------------- SOBRE ---------------------------------------");
-			gotoxy(1,6);printf("| O trabalho consiste na criação de um programa que permita que o usuário     |");
-			gotoxy(1,7);printf("| faça a utilização das Estruturas de Pilha e Fila Estática.                  |");
-			gotoxy(1,8);printf("| Nome do Programa: Trabalho 01                                               |");
-			gotoxy(1,9);printf("| Nome do Aluno: Gabriel Augusto Queiroz de Almeida                           |");
-			gotoxy(1,10);printf("|                                                                             |");
-			gotoxy(1,11);printf("|                                                                             |");
-			gotoxy(3,10);system ("  date /t" );
-			gotoxy(3,11);system ("   time /t");
-			gotoxy(1,12);printf("| Aperte enter para voltar ao menu principal....                              |");
-				for(int i=2;i<79;i++){
+			gotoxy(25,5);printf("------------------------------ SOBRE ----------------------------------------");
+			gotoxy(24,6);printf("| O trabalho consiste na criação de um programa que permita que o usuário     |");
+			gotoxy(24,7);printf("| faça a utilização das Estruturas de Pilha e Fila Estática.                  |");
+			gotoxy(24,8);printf("| Nome do Programa: Trabalho 01                                               |");
+			gotoxy(24,9);printf("| Nome do Aluno: Gabriel Augusto Queiroz de Almeida                           |");
+			gotoxy(24,10);printf("|                                                                             |");
+			gotoxy(24,11);printf("|                                                                             |");
+			gotoxy(26,10);system ("  date /t" );
+			gotoxy(26,11);system ("   time /t");
+			gotoxy(24,12);printf("| Aperte enter para voltar ao menu principal....                              |");
+				for(int i=25;i<102;i++){
 					gotoxy(i,13);printf("-"); //For para o prenchimento da parte inferior do menu
 				}
 			tecla=getch();
@@ -596,16 +596,16 @@ int menu_fila(){
 	inicio:
 		do{
 			system("cls");
-			gotoxy(24,5);printf("----------------- Fila  ------------");
-			gotoxy(23,6);printf("|                Inserir             |");
-			gotoxy(23,7);printf("|                Excluir             |");
-			gotoxy(23,8);printf("|                Listar              |");
-			gotoxy(23,9);printf("|                Buscar              |");
-			gotoxy(23,10);printf("|                Voltar              |");
-				for(int i=24;i<60;i++){
-					gotoxy(i,11);printf("-"); //For para o prenchimento da parte inferior do menu
-				}
-			gotoxy(24,posicao);printf("%c%c",62,62);gotoxy(58,posicao);printf("%c%c",60,60);  //setinhas de seleção
+			gotoxy(24,5);printf("--------------------- Fila ----------------------");
+			gotoxy(23,6);printf("|                     Inserir                     |");
+			gotoxy(23,7);printf("|                     Excluir                     |");
+			gotoxy(23,8);printf("|                     Listar                      |");
+			gotoxy(23,9);printf("|                     Buscar                      |");
+			gotoxy(23,10);printf("|                     Voltar                      |");
+			for(int i=24;i<73;i++){
+				gotoxy(i,11);printf("-"); //For para o prenchimento da parte inferior do menu
+			}  
+			gotoxy(24,posicao);printf("%c%c",62,62);gotoxy(71,posicao);printf("%c%c",60,60);  //setinhas de seleção
 			tecla=getch();
 			if (tecla == ESC){
 				main();
@@ -631,7 +631,7 @@ int menu_fila(){
 						gotoxy(73,7);printf("|");
 						gotoxy(23,7);printf("|");
 						gotoxy(24,8);printf("-------------------------------------------------");
-						gotoxy(24,5);printf("---------------------- Fila ---------------------");
+						gotoxy(24,5);printf("--------------------- Fila ----------------------");
 						gotoxy(23,6);printf("| Informe o valor a inserir:");
  						scanf("%d",&valor);
 						Inserir(fila,&fim,tam,valor);
@@ -640,8 +640,8 @@ int menu_fila(){
 						gotoxy(73,6);printf("|");
 						gotoxy(73,7);printf("|");
 						gotoxy(23,7);printf("|");
-						gotoxy(24,8);printf("-------------------------------------------------");
-						gotoxy(24,5);printf("---------------------- Fila ---------------------");
+						gotoxy(24,8);printf("-----------------------------------------------");
+						gotoxy(24,5);printf("--------------------- Fila ----------------------");
 					 	gotoxy(23,6);printf("| Fila Cheia");
  					}
  					gotoxy(25,7);system("Pause"); 
@@ -652,12 +652,12 @@ int menu_fila(){
 					system("cls");
 					if (fim>0){
 						excluido=Remover(fila,&fim); 
-						gotoxy(24,5);printf("----------------- Fila ------------");
+						gotoxy(24,5);printf("--------------------- Fila ----------------------");
  						gotoxy(23,6);printf("Elemento [%d] Excluido da Fila",excluido);
  						gotoxy(23,7);system("Pause");
  					}
 					else{
-						gotoxy(24,5);printf("----------------- Fila ------------");
+						gotoxy(24,5);printf("--------------------- Fila ----------------------");
  						gotoxy(23,6);printf("Fila Vazia");
 						gotoxy(23,7);system("Pause");
 					}
@@ -666,31 +666,44 @@ int menu_fila(){
 				}		
 				case 8:{
 					system("cls");
-					for(int i=24;i<60;i++){
-						gotoxy(i,9);printf("-"); //For para o prenchimento da parte inferior do menu
-					}
-					gotoxy(24,4);printf("----------------- Fila ------------");
-					gotoxy(23,5);printf("| 1  - Ordem Crescente              |");
-					gotoxy(23,6);printf("| 2  - Ordem Decrescente            |");
-					gotoxy(23,7);printf("| Escolha a opcao:                  |");
-					gotoxy(23,8);printf("|                                   |");
-					gotoxy(25,8);scanf("%d",&op);
+					for(int i=24;i<73;i++){
+							gotoxy(i,10);printf("-"); //For para o prenchimento da parte inferior do menu
+					}  
+					gotoxy(24,5);printf("--------------------- Fila ----------------------");
+					gotoxy(23,6);printf("| 1  - Ordem Crescente                            |");
+					gotoxy(23,7);printf("| 2  - Ordem Decrescente                          |");
+					gotoxy(23,8);printf("| Escolha a opcao:                                |");
+					gotoxy(23,9);printf("|                                                 |");
+					gotoxy(25,9);scanf("%d",&op);
 		
 					switch(op){
 						case 1:{
 						system("cls");
 						if (fim!=0){
+							       for(int i=24;i<72;i++){
+										gotoxy(i,22);printf("-"); //For para o prenchimento da parte inferior do menu
+									}        
+									for(int i=6;i<22;i++){
+										gotoxy(72,i);printf("|"); //For para o prenchimento da parte lateral do menu
+									} 
+									for(int i=6;i<22;i++){
+										gotoxy(23,i);printf("|"); //For para o prenchimento da parte lateral do menu
+									} 
 							for (cont =0;cont<fim;cont++){
-								gotoxy(24,4);printf("----------------- Fila ------------");
-								gotoxy(23,6+cont);
+								gotoxy(24,4);printf("--------------------- Fila --------------------");
+								gotoxy(25,6+cont);
 								printf("elemento [%d] ===== %d",cont, fila[cont]);
 							}
-							gotoxy(23,5);system("Pause");
+							gotoxy(25,5);system("Pause");
  						}
 						else{
-							gotoxy(24,4);printf("----------------- Fila ------------");
-							gotoxy(23,5);printf("Fila Vazia");
- 							gotoxy(23,6);system("Pause");
+							for(int i=24;i<71;i++){
+								gotoxy(i,7);printf("-"); //For para o prenchimento da parte inferior do menu
+							}      
+							gotoxy(23,6);printf("|                                               |");
+							gotoxy(24,4);printf("--------------------- Fila ----------------------");
+							gotoxy(23,5);printf("| Fila Vazia                                    |");
+ 							gotoxy(25,6);system("Pause");
  						}
  						goto inicio;
  						break;
@@ -700,16 +713,20 @@ int menu_fila(){
 						if (fim>0){
 							int aux = 0;
 							for (cont = fim-1;cont>=aux;aux++){
-								gotoxy(24,4);printf("----------------- Fila ------------");
-								gotoxy(23,6+aux);
-								printf("elemento [%d] ===== %d",cont-aux, fila[cont-aux]);
+								gotoxy(23,5);printf("|");
+								gotoxy(24,4);printf("--------------------- Fila ----------------------");
+								gotoxy(23,6+aux);printf("elemento [%d] ===== %d",cont-aux, fila[cont-aux]);
 							}
-							gotoxy(23,5);system("Pause");
+							gotoxy(25,5);system("Pause");
  						}
 						else{
-							gotoxy(24,4);printf("----------------- Fila ------------");
-							gotoxy(23,5);printf("Fila Vazia");
- 							gotoxy(23,6);system("Pause");
+							for(int i=24;i<71;i++){
+								gotoxy(i,7);printf("-"); //For para o prenchimento da parte inferior do menu
+							}      
+							gotoxy(23,6);printf("|                                               |");
+							gotoxy(24,4);printf("--------------------- Fila ----------------------");
+							gotoxy(23,5);printf("| Fila Vazia                                    |");
+ 							gotoxy(25,6);system("Pause");
  						}
  						goto inicio;
  						break;
@@ -723,7 +740,7 @@ int menu_fila(){
 					for(int i=24;i<60;i++){
 						gotoxy(i,9);printf("-"); //For para o prenchimento da parte inferior do menu
 					}
-					gotoxy(24,4);printf("----------------- Fila ------------");
+					gotoxy(24,4);printf("--------------------- Fila ----------------------");
 					gotoxy(23,5);printf("| 1  - Busca Sequencial             |");
 					gotoxy(23,6);printf("| 2  - Ordem Binária                |");
 					gotoxy(23,7);printf("| Escolha a opcao:                  |");
@@ -732,7 +749,7 @@ int menu_fila(){
 					switch(opcao){
 						case 1:{
 						system("cls");
-								gotoxy(24,4);printf("----------------- Fila ------------");
+								gotoxy(24,4);printf("--------------------- Fila ----------------------");
 								gotoxy(23,5);printf("Informe o número que deseja procurar:");
 								gotoxy(23,6);printf("|                                   |");
 								gotoxy(25,6);scanf("%d",&busca);
@@ -740,18 +757,18 @@ int menu_fila(){
 									system("cls");
 									for(cont = 0; cont<fim; cont++){
 											if(fila[cont] == busca){
-												gotoxy(24,4);printf("----------------- Fila ------------");
+												gotoxy(24,4);printf("--------------------- Fila ----------------------");
 										 		gotoxy(23,5);printf("Elemento [%d] encontrado na posição [%d]", busca, cont);
 										 		gotoxy(23,6);system("pause");
 										 		goto inicio;
 										 	}
 								}
-									gotoxy(24,4);printf("----------------- Fila ------------");
+									gotoxy(24,4);printf("--------------------- Fila ----------------------");
 									gotoxy(23,5);printf("Elemento [%d] não encontrado", busca);
 									gotoxy(23,6);system("pause");
 								}
 								else{
-									gotoxy(24,4);printf("----------------- Fila ------------");
+									gotoxy(24,4);printf("--------------------- Fila ----------------------");
 									gotoxy(23,5);printf("Lista vazia");
 									gotoxy(23,6);system("pause");
 									goto inicio;
@@ -762,19 +779,19 @@ int menu_fila(){
  						case 2:{
  							insertion_sort(fila, 10);
 							system("cls");
-							gotoxy(24,4);printf("----------------- Fila ------------");
+							gotoxy(24,4);printf("--------------------- Fila ----------------------");
 							gotoxy(24,5);printf("digite o valor que deseja procurar:");
 							gotoxy(24,6);scanf("%d", &x);
 							int pos = buscaBinaria(fila, 10,x);
 							system("cls");
 							if (pos != -1){
-								gotoxy(24,4);printf("----------------- Fila ------------");
+								gotoxy(24,4);printf("--------------------- Fila ----------------------");
 								gotoxy(24,5);printf("Elemento [%d] encontrado na posição [%d]\n",x, pos);
 								gotoxy(24,6);system("pause");
 							}
 							else{
-								gotoxy(24,4);printf("----------------- Fila ------------");
-								gotoxy(24,5);printf("Elemento [%d]não encontra-se no vetor!\n", x);
+								gotoxy(24,4);printf("--------------------- Fila ----------------------");
+								gotoxy(24,5);printf("Elemento [%d] não encontra-se no vetor!\n", x);
 								gotoxy(24,6);system("pause");
 							}
  						}	
@@ -794,16 +811,16 @@ int menu_principal(){
 	int posicao = 6, tecla;		
 		do{
 			system("cls");
-			gotoxy(24,5);printf("------------ MENU ----------");
-			gotoxy(23,6);printf("|            Aluno           |");
-			gotoxy(23,7);printf("|            Pilha           |");
-			gotoxy(23,8);printf("|            Fila            |");
-			gotoxy(23,9);printf("|            Sobre           |");
-			gotoxy(23,10);printf("|            Sair            |");
-				for(int i=24;i<52;i++){
+			gotoxy(24,5);printf("--------------------- MENU ----------------------");
+			gotoxy(23,6);printf("|                     Aluno                       |");
+			gotoxy(23,7);printf("|                     Pilha                       |");
+			gotoxy(23,8);printf("|                     Fila                        |");
+			gotoxy(23,9);printf("|                     Sobre                       |");
+			gotoxy(23,10);printf("|                     Sair                        |");
+				for(int i=24;i<73;i++){
 					gotoxy(i,11);printf("-"); //For para o prenchimento da parte inferior do menu
 				}
-			gotoxy(24,posicao);printf("%c%c",62,62);gotoxy(50,posicao);printf("%c%c",60,60);  //setinhas de seleção
+			gotoxy(24,posicao);printf("%c%c",62,62);gotoxy(71,posicao);printf("%c%c",60,60);  //setinhas de seleção
 			tecla=getch();
 				if(tecla == ABAIXO){
 					posicao=posicao+1;
