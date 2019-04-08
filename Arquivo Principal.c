@@ -401,16 +401,16 @@ int menu_pilha(){
 	inicio:
 		do{
 			system("cls");
-			gotoxy(24,5);printf("----------------- Pilha ------------");
-			gotoxy(23,6);printf("|                Inserir             |");
-			gotoxy(23,7);printf("|                Excluir             |");
-			gotoxy(23,8);printf("|                Listar              |");
-			gotoxy(23,9);printf("|                Buscar              |");
-			gotoxy(23,10);printf("|                Voltar              |");
-				for(int i=24;i<60;i++){
+			gotoxy(24,5);printf("--------------------- Pilha ---------------------");
+			gotoxy(23,6);printf("|                     Inserir                     |");
+			gotoxy(23,7);printf("|                     Excluir                     |");
+			gotoxy(23,8);printf("|                     Listar                      |");
+			gotoxy(23,9);printf("|                     Buscar                      |");
+			gotoxy(23,10);printf("|                     Voltar                      |");
+				for(int i=24;i<73;i++){
 					gotoxy(i,11);printf("-"); //For para o prenchimento da parte inferior do menu
 				}
-			gotoxy(24,posicao);printf("%c%c",62,62);gotoxy(58,posicao);printf("%c%c",60,60);  //setinhas de seleção
+			gotoxy(24,posicao);printf("%c%c",62,62);gotoxy(71,posicao);printf("%c%c",60,60);  //setinhas de seleção
 			tecla=getch();
 			if (tecla == ESC){
 				main();
@@ -432,16 +432,23 @@ int menu_pilha(){
 				case 6:{
 					system("cls");
 					if(topoPilha<10){
-						gotoxy(24,5);printf("----------------- Pilha ------------");
-						gotoxy(23,6);printf("Informe o valor a inserir:");
- 						scanf("%d",&valor);
+						gotoxy(24,5);printf("--------------------- Pilha ---------------------");
+						gotoxy(23,6);printf("| Informe o valor a inserir:");
+						gotoxy(24,8);printf("-------------------------------------------------");
+ 						gotoxy(73,6);printf("|");
+ 						gotoxy(73,7);printf("|");
+ 						gotoxy(23,7);printf("|");
+ 						gotoxy(51,6);scanf("%d",&valor);
 						inserirValorPilha(pilha,&topoPilha, TAMANHO_PILHA,valor);
 					 }
 					 else{
-					 	gotoxy(24,5);printf("----------------- Pilha ------------");
-					 	gotoxy(23,6);printf("Pilha Cheia");
+					 	gotoxy(24,5);printf("--------------------- Pilha ---------------------");
+					 	gotoxy(23,6);printf("| Pilha Cheia                                     |");
+					 	gotoxy(24,8);printf("-------------------------------------------------");
+ 						gotoxy(73,7);printf("|");
+ 						gotoxy(23,7);printf("|");
  					}
- 					gotoxy(23,7);system("Pause"); 
+ 					gotoxy(25,7);system("Pause"); 
  					goto inicio;
  					break;
  				}
@@ -449,45 +456,65 @@ int menu_pilha(){
 					system("cls");
 					if (topoPilha>0){
 						remo=removerValorPilha(pilha,&topoPilha); 
-						gotoxy(24,5);printf("----------------- Pilha ------------");
- 						gotoxy(23,6);printf("Elemento [%d] Excluido da Pilha",remo);
- 						gotoxy(23,7);system("Pause");
+						gotoxy(24,5);printf("--------------------- Pilha ---------------------");
+ 						gotoxy(23,6);printf("| Elemento [%d] Excluido da Pilha",remo);
+ 						gotoxy(24,8);printf("-------------------------------------------------");
+ 						gotoxy(73,6);printf("|");
+ 						gotoxy(73,7);printf("|");
+ 						gotoxy(23,7);printf("|");
+ 						gotoxy(25,7);system("Pause");
  					}
 					else{
-						gotoxy(24,5);printf("----------------- Pilha ------------");
- 						gotoxy(23,6);printf("Pilha Vazia");
-						gotoxy(23,7);system("Pause");
+					 	gotoxy(24,5);printf("--------------------- Pilha ---------------------");
+					 	gotoxy(23,6);printf("| Pilha Vazia                                     |");
+					 	gotoxy(24,8);printf("-------------------------------------------------");
+ 						gotoxy(73,7);printf("|");
+ 						gotoxy(23,7);printf("|");
+						gotoxy(25,7);system("Pause");
 					}
 						goto inicio;
 						break;
 				}		
 				case 8:{
 					system("cls");
-					for(int i=24;i<60;i++){
-						gotoxy(i,9);printf("-"); //For para o prenchimento da parte inferior do menu
+					for(int i=24;i<73;i++){
+						gotoxy(i,10);printf("-"); //For para o prenchimento da parte inferior do menu
 					}
-					gotoxy(24,4);printf("----------------- Pilha ------------");
-					gotoxy(23,5);printf("| 1  - Ordem Crescente              |");
-					gotoxy(23,6);printf("| 2  - Ordem Decrescente            |");
-					gotoxy(23,7);printf("| Escolha a opcao:                  |");
-					gotoxy(23,8);printf("|                                   |");
-					gotoxy(25,8);scanf("%d",&op);
+					gotoxy(24,5);printf("--------------------- Pilha ---------------------");
+					gotoxy(23,6);printf("| 1  - Ordem Crescente                            |");
+					gotoxy(23,7);printf("| 2  - Ordem Decrescente                          |");
+					gotoxy(23,8);printf("| Escolha a opcao:                                |");
+					gotoxy(23,9);printf("|                                                 |");
+					gotoxy(24,10);printf("-------------------------------------------------");
+					gotoxy(25,9);scanf("%d",&op);
 		
 					switch(op){
 						case 1:{
 						system("cls");
 						if (topoPilha>0){
+							for(int i=24;i<72;i++){
+								gotoxy(i,17);printf("-"); //For para o prenchimento da parte inferior do menu
+							}        
+							for(int i=6;i<17;i++){
+								gotoxy(72,i);printf("|"); //For para o prenchimento da parte lateral do menu
+							} 
+							for(int i=6;i<17;i++){
+								gotoxy(23,i);printf("|"); //For para o prenchimento da parte lateral do menu
+							} 
 							for (cont = 0;cont<topoPilha;cont++){
-								gotoxy(24,4);printf("----------------- Pilha ------------");
-								gotoxy(23,6+cont);
-								printf("elemento [%d] ===== %d",cont, pilha[cont]);
+								gotoxy(24,5);printf("--------------------- Pilha --------------------");
+								gotoxy(25,7+cont);
+								printf("Elemento [%d] ===== %d",cont, pilha[cont]);
 							}
-							gotoxy(23,5);system("Pause");
+							gotoxy(25,6);system("Pause");
  						}
 						else{
-							gotoxy(24,4);printf("----------------- Pilha ------------");
-							gotoxy(23,5);printf("Pilha Vazia");
- 							gotoxy(23,6);system("Pause");
+							gotoxy(24,5);printf("--------------------- Pilha ---------------------");
+							gotoxy(23,6);printf("| Pilha Vazia                                     |");
+							gotoxy(24,8);printf("-------------------------------------------------");
+ 							gotoxy(73,7);printf("|");
+ 							gotoxy(23,7);printf("|");
+ 							gotoxy(25,7);system("Pause");
  						}
  						goto inicio;
  						break;
@@ -496,17 +523,28 @@ int menu_pilha(){
 						system("cls");
 						if (topoPilha>0){
 							int aux = 0;
+							for(int i=24;i<72;i++){
+								gotoxy(i,17);printf("-"); //For para o prenchimento da parte inferior do menu
+							}        
+							for(int i=6;i<17;i++){
+								gotoxy(72,i);printf("|"); //For para o prenchimento da parte lateral do menu
+							} 
+							for(int i=6;i<17;i++){
+								gotoxy(23,i);printf("|"); //For para o prenchimento da parte lateral do menu
+							} 
 							for (cont = topoPilha-1;cont>=aux;aux++){
-								gotoxy(24,4);printf("----------------- Pilha ------------");
-								gotoxy(23,6+aux);
-								printf("elemento [%d] ===== %d",cont-aux, pilha[cont-aux]);
+								gotoxy(24,5);printf("--------------------- Pilha ---------------------");
+								gotoxy(25,7+aux);printf("Elemento [%d] ===== %d",cont-aux, pilha[cont-aux]);
 							}
-							gotoxy(23,5);system("Pause");
+							gotoxy(25,6);system("Pause");
  						}
 						else{
-							gotoxy(24,4);printf("----------------- Pilha ------------");
-							gotoxy(23,5);printf("Pilha Vazia");
- 							gotoxy(23,6);system("Pause");
+							gotoxy(24,5);printf("--------------------- Pilha ---------------------");
+							gotoxy(23,6);printf("| Pilha Vazia                                     |");
+							gotoxy(24,8);printf("-------------------------------------------------");
+	 						gotoxy(73,7);printf("|");
+ 							gotoxy(23,7);printf("|");
+ 							gotoxy(25,7);system("Pause");
  						}
  						goto inicio;
  						break;
@@ -517,64 +555,91 @@ int menu_pilha(){
  				} 	
 					case 9:{
 				system("cls");
-					for(int i=24;i<60;i++){
-						gotoxy(i,9);printf("-"); //For para o prenchimento da parte inferior do menu
+					for(int i=24;i<73;i++){
+						gotoxy(i,10);printf("-"); //For para o prenchimento da parte inferior do menu
 					}
-					gotoxy(24,4);printf("----------------- Pilha ------------");
-					gotoxy(23,5);printf("| 1  - Busca Sequencial             |");
-					gotoxy(23,6);printf("| 2  - Ordem Binária                |");
-					gotoxy(23,7);printf("| Escolha a opcao:                  |");
-					gotoxy(23,8);printf("|                                   |");
-					gotoxy(25,8);scanf("%d",&opcao);
+					gotoxy(24,5);printf("--------------------- Pilha ---------------------");
+					gotoxy(23,6);printf("| 1  - Busca Sequencial                           |");
+					gotoxy(23,7);printf("| 2  - Ordem Binária                              |");
+					gotoxy(23,8);printf("| Escolha a opcao:                                |");
+					gotoxy(23,9);printf("|                                                 |");
+					gotoxy(25,9);scanf("%d",&opcao);
 					switch(opcao){
 						case 1:{
 						system("cls");
-								gotoxy(24,4);printf("----------------- Pilha ------------");
-								gotoxy(23,5);printf("Informe o número que deseja procurar:");
-								gotoxy(23,6);printf("|                                   |");
-								gotoxy(25,6);scanf("%d",&busca);
+								gotoxy(24,5);printf("--------------------- Pilha ---------------------");
+								gotoxy(23,6);printf("| Informe o número que deseja procurar:           |");
+								gotoxy(23,7);printf("|                                                 |");
+								gotoxy(24,8);printf("-------------------------------------------------");
+								gotoxy(25,7);scanf("%d",&busca);
 								if (topoPilha>0){
 								system("cls");
 									for(cont = 0; cont<topoPilha; cont++){
 											if(pilha[cont] == busca){
-												gotoxy(24,4);printf("----------------- Pilha ------------");
-										 		gotoxy(23,5);printf("Elemento [%d] encontrado na posição [%d]", busca, cont);
-										 		gotoxy(23,6);system("pause");
+												gotoxy(24,5);printf("--------------------- Pilha ---------------------");
+										 		gotoxy(23,6);printf("| Elemento [%d] encontrado na posição [%d]", busca, cont);
+										 		gotoxy(73,6);printf("|");
+										 		gotoxy(24,8);printf("-------------------------------------------------");
+										 		gotoxy(23,7);printf("|                                                 |");
+										 		gotoxy(25,7);system("pause");
 										 		goto inicio;
 										 	}
 								}
-								gotoxy(24,4);printf("----------------- Pilha ------------");
-								gotoxy(23,5);printf("Elemento [%d] não encontrado", busca);
-								gotoxy(23,6);system("pause");
+								gotoxy(24,5);printf("--------------------- Pilha ---------------------");
+								gotoxy(23,6);printf("| Elemento [%d] não encontrado", busca);
+								gotoxy(23,7);printf("|                                                 |");
+								gotoxy(73,6);printf("|");
+								gotoxy(24,8);printf("-------------------------------------------------");
+								gotoxy(25,7);system("pause");
 								}
 								else{
-								gotoxy(24,4);printf("----------------- Pilha ------------");
-								gotoxy(23,5);printf("Pilha vazia");
-								gotoxy(23,6);system("pause");
+								gotoxy(24,5);printf("--------------------- Pilha ---------------------");
+								gotoxy(23,6);printf("| Pilha vazia                                     |");
+								gotoxy(23,7);printf("|                                                 |");
+								gotoxy(24,8);printf("-------------------------------------------------");
+								gotoxy(25,7);system("pause");
 								goto inicio;
 							}
 						}
 						goto inicio;
  						break;
  						case 2:{
+ 							if (topoPilha == 0){
+ 								system("cls");
+ 								gotoxy(24,5);printf("--------------------- Pilha ---------------------");
+ 								gotoxy(23,6);printf("| Pilha vazia                                     |");
+ 								gotoxy(23,7);printf("|                                                 |");
+								gotoxy(24,8);printf("-------------------------------------------------");
+ 								gotoxy(25,7);system("pause");
+							 }
+							else{
 							insertion_sort(pilha, 10);
 							system("cls");
-							gotoxy(24,4);printf("----------------- Pilha ------------");
-							gotoxy(24,5);printf("digite o valor que deseja procurar:");
-							gotoxy(24,6);scanf("%d", &x);
+							gotoxy(24,5);printf("--------------------- Pilha ---------------------");
+							gotoxy(23,6);printf("| Digite o valor que deseja procurar:             |");
+							gotoxy(23,7);printf("|                                                 |");
+							gotoxy(24,8);printf("-------------------------------------------------");
+							gotoxy(24,7);scanf("%d", &x);
 							int pos = buscaBinaria(pilha, 10,x);
 							system("cls");
-							
+
 							if (pos != -1){
-								gotoxy(24,4);printf("----------------- Pilha ------------");
-								gotoxy(24,5);printf("Elemento [%d] encontrado na posição [%d]\n",x, pos);
-								gotoxy(24,6);system("pause");
+								gotoxy(24,5);printf("--------------------- Pilha ---------------------");
+								gotoxy(23,6);printf("| Elemento [%d] encontrado na posição [%d]\n",x, pos);
+								gotoxy(23,7);printf("|                                                 |");
+								gotoxy(73,6);printf("|");
+								gotoxy(24,8);printf("-------------------------------------------------");
+								gotoxy(25,7);system("pause");
 							}
 							else{
-								gotoxy(24,4);printf("----------------- Pilha ------------");
-								gotoxy(24,5);printf("Elemento [%d]não encontra-se no vetor!\n", x);
-								gotoxy(24,6);system("pause");
+								gotoxy(24,5);printf("--------------------- Pilha ---------------------");
+								gotoxy(23,6);printf("| Elemento [%d] não encontra-se no vetor!\n", x);
+								gotoxy(23,7);printf("|                                                 |");
+								gotoxy(73,6);printf("|");
+								gotoxy(24,8);printf("-------------------------------------------------");
+								gotoxy(25,7);system("pause");
 							}
+						}
  						}
  					}
  					goto inicio;
@@ -816,6 +881,15 @@ int menu_fila(){
 						goto inicio;
  						break;
  						case 2:{
+ 							if (fim == 0){
+ 								system("cls");
+ 								gotoxy(24,5);printf("--------------------- Fila ----------------------");
+ 								gotoxy(23,6);printf("| Fila vazia                                      |");
+ 								gotoxy(23,7);printf("|                                                 |");
+								gotoxy(24,8);printf("-------------------------------------------------");
+ 								gotoxy(25,7);system("pause");	
+							 }
+							else{
  							insertion_sort(fila, 10);
 							system("cls");
 							gotoxy(24,5);printf("--------------------- Fila ----------------------");
@@ -840,7 +914,8 @@ int menu_fila(){
 								gotoxy(24,8);printf("-------------------------------------------------");
 								gotoxy(25,7);system("pause");
 							}
- 						}	
+						}
+ 					}	
  					}
  					goto inicio;
 					break;
