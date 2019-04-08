@@ -567,12 +567,12 @@ int menu_pilha(){
 					switch(opcao){
 						case 1:{
 						system("cls");
+								if (topoPilha>0){
 								gotoxy(24,5);printf("--------------------- Pilha ---------------------");
 								gotoxy(23,6);printf("| Informe o número que deseja procurar:           |");
 								gotoxy(23,7);printf("|                                                 |");
 								gotoxy(24,8);printf("-------------------------------------------------");
 								gotoxy(25,7);scanf("%d",&busca);
-								if (topoPilha>0){
 								system("cls");
 									for(cont = 0; cont<topoPilha; cont++){
 											if(pilha[cont] == busca){
@@ -841,14 +841,14 @@ int menu_fila(){
 					switch(opcao){
 						case 1:{
 							system("cls");
-							for(int i=24;i<73;i++){
-								gotoxy(i,8);printf("-"); //For para o prenchimento da parte inferior do menu
-							}
-							gotoxy(24,5);printf("--------------------- Fila ----------------------");
-							gotoxy(23,6);printf("| Informe o número que deseja procurar:           |");
-							gotoxy(23,7);printf("|                                                 |");
-							gotoxy(25,7);scanf("%d",&busca);
 							if (fim>0){
+								for(int i=24;i<73;i++){
+									gotoxy(i,8);printf("-"); //For para o prenchimento da parte inferior do menu
+								}
+								gotoxy(24,5);printf("--------------------- Fila ----------------------");
+								gotoxy(23,6);printf("| Informe o número que deseja procurar:           |");
+								gotoxy(23,7);printf("|                                                 |");
+								gotoxy(25,7);scanf("%d",&busca);
 								system("cls");
 								for(cont = 0; cont<fim; cont++){
 									if(fila[cont] == busca){
@@ -932,6 +932,13 @@ int menu_principal(){
 	int posicao = 6, tecla;		
 		do{
 			system("cls");
+			gotoxy(24,15);printf("------------------------------ CONTROLES --------------------------------");
+			gotoxy(23,16);printf("| Use as setas para cima e para baixo do teclado para navegar no menu     |");
+			gotoxy(23,17);printf("| Aperte ENTER para selecionar a opção desejada                           |");
+			gotoxy(23,18);printf("| Aperte ESC para voltar no Menu                                          |");
+				for(int i=24;i<97;i++){
+					gotoxy(i,19);printf("-"); //For para o prenchimento da parte inferior do menu
+				}
 			gotoxy(24,5);printf("--------------------- MENU ----------------------");
 			gotoxy(23,6);printf("|                     Aluno                       |");
 			gotoxy(23,7);printf("|                     Pilha                       |");
