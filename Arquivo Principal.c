@@ -1,5 +1,5 @@
 /*************************************************************************
-Nome da Disciplina: EDD
+Nome da Disciplina: Estrutura de Dados
 Nome Professor: Leonair Neves Sousa
 Nome Aluno: Gabriel Augusto Queiroz de Almeida
 Turma: VE1
@@ -284,7 +284,7 @@ int removerValorPilha(int pilha[], int *topoPilha){
 
 int menu_principal(); //funcao que desenha o menu na tela
 int main(){	
-	system("Color 30");
+	system("Color 1A");
 	setlocale(LC_ALL,""); // acentuacao
 	menu_principal(); // funcao para abrir o menu principal
 	system("cls"); //limpar tela
@@ -301,7 +301,7 @@ void gotoxy( int x, int y ){
 
 //funcao contendo o menu aluno e seus sub menus
 int menu_aluno(){
-	system("Color 30");	
+	system("Color 1B");	
 	Fila *fila = NULL; 
 	Inicializar(&fila);
 	int aux, numero;
@@ -359,7 +359,7 @@ int menu_aluno(){
 
 //funcao contendo o sub menu Sobre
 int sobre(){
-	system("Color 30");	
+	system("Color 1F");	
 	int aux;
 	int posicao = 6, tecla;	
 		do{
@@ -390,7 +390,7 @@ int sobre(){
 
 //funcao contem o Menu pilha e seus sub menus
 int menu_pilha(){	
-	system("Color 30");	
+	system("Color 1C");	
 	int pilha[TAMANHO_PILHA];
 	int topoPilha = 0; //considera que uma a ser inciada tem valor de topo = 0
 	int valor,cont,remo,op;
@@ -654,7 +654,7 @@ int menu_pilha(){
 
 //funcao contem o menu fila e seus sub menus
 int menu_fila(){
-	system("Color 30");	
+	system("Color 1E");	
 	int fila[10];
  	int fim = 0; //considera que uma fila a ser inciada tem valor de fim = 0
  	int valor,cont,op,excluido;int tam=10;
